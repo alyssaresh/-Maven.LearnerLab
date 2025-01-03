@@ -19,6 +19,7 @@ public class Student extends Person implements Learner {
     public Double getTotalStudyTime() {
         return totalStudyTime;
     }
+
 }
 
 //* Create a `Student` class such that:
