@@ -3,6 +3,9 @@ package io.zipcoder.interfaces;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestPeople {
 //    ### Part 6.0 - Test `People`
 //            * Create a `TestPeople` class.
@@ -59,5 +62,54 @@ public class TestPeople {
         Person personToFind = people.findById(11123);
         Assert.assertNotEquals("Deepti", personToFind.getName());
     }
+
+    @Test
+    public void testContains(){
+        People people = new People();
+        Person person1 = new Student(43234523, "Deepti");
+        Person person2 = new Student(12358091, "Dash");
+        Person person3 = new Student(11123, "Al");
+        people.add(person1);
+        people.add(person2);
+        people.add(person3);
+        Assert.assertTrue(people.contains(person1));
+    }
+
+    @Test
+    public void testRemoveById(){
+        People people = new People();
+        Person person1 = new Student(43234523, "Deepti");
+        Person person2 = new Student(12358091, "Dash");
+        Person person3 = new Student(11123, "Al");
+        people.add(person1);
+        people.add(person2);
+        people.add(person3);
+        people.remove(43234523);
+        Assert.assertFalse(people.contains(person1));
+    }
+
+    @Test
+    public void testRemoveAll(){ //also tests count
+        People people = new People();
+        Person person1 = new Student(43234523, "Deepti");
+        Person person2 = new Student(12358091, "Dash");
+        Person person3 = new Student(11123, "Al");
+        people.add(person1);
+        people.add(person2);
+        people.add(person3);
+        people.removeAll();
+        Assert.assertEquals(people.count(), 0);
+    }
+
+//    @Test
+//    public void iteratorTest() {
+//        People people = new People();
+//        Person person1 = new Student(43234523, "Deepti");
+//        Person person2 = new Student(12358091, "Dash");
+//        Person person3 = new Student(11123, "Al");
+//        Iterator<String> iterator = listOfStrings.iterator();
+//        Assert.assertTrue(iterator.hasNext());
+//        Assert.assertEquals(iterator.next(), "hello");
+//    }
 
 }
